@@ -477,6 +477,34 @@ git tag v1.2.1</code>
                             </div>
                         </div>
                     </div>
+
+                    <!-- BugFix Branches -->
+                    <div class="branch-card hotfix-branch">
+                        <div class="branch-header">
+                            <h3>🟡 bugfix/* (Corrección)</h3>
+                            <span class="badge badge-warning">Rama de Corrección</span>
+                        </div>
+                        <div class="branch-content">
+                            <p><strong>Propósito:</strong> Corregir errores no críticos detectados durante el desarrollo antes de liberar a producción.</p>
+                            <div class="branch-details">
+                                <h4>Características:</h4>
+                                <ul>
+                                    <li>Se crea desde develop</li>
+                                    <li>Se usa para arreglos de bugs menores o ajustes funcionales</li>                                   
+                                    <li>Se fusiona en develop</li>
+                                    <li>Convención: bugfix/nombre-del-bug</li>
+                                </ul>
+                            </div>
+                            <div class="branch-example">
+                                <strong>Flujo típico:</strong>
+                                <code>git checkout -b bugfix/fix-login-error develop <br>
+# ... arreglar bug ...<br>
+git checkout develop<br>
+git merge --no-ff bugfix/fix-login-error<br>
+git tag v1.2.1</code>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Branch Comparison Table -->
