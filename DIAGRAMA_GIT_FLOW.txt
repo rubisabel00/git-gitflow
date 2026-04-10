@@ -1,0 +1,441 @@
+"""
+╔════════════════════════════════════════════════════════════════════════════╗
+║                     DIAGRAMA VISUAL: GIT FLOW COMPLETO                     ║
+╚════════════════════════════════════════════════════════════════════════════╝
+"""
+
+# GIT FLOW - ESTRUCTURA GENERAL
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+                    MAIN (Producción)
+                        │
+        v1.0  ◄─────────┼─────────► v1.1  ◄─────────► v1.2
+         ●──────────────●──────────●──────────────●──────────●
+                        ↓          ↑              ↓          ↑
+    ╔════════════════════════════════════════════════════════════╗
+    ║   DEVELOP (Integración)                                    ║
+    ║   ●──────┬─────────┬──────────┬──────────────┬─────────●   ║
+    ║          │         │          │              │             ║
+    ║    feature/  feature/ feature/ release/   hotfix/          ║
+    ║    login    dashboard users    v1.2       bug-fix          ║
+    ║      ●        ●       ●       ●           ●                ║
+    ║      │        │       │       │           │                ║
+    ║   ◄──┴────────┴───────┴──────►│           │                ║
+    ║                               │           │                ║
+    ║                            ◄──┘           │                ║
+    ║                                        ◄──┘                ║
+    ╚════════════════════════════════════════════════════════════╝
+"""
+
+# CICLO DE VIDA COMPLETO DE UNA FEATURE
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+PASO 1: CREAR FEATURE
+─────────────────────
+    develop
+      │
+      │ git flow feature start login
+      │ o
+      │ git checkout -b feature/login develop
+      │
+      ↓
+    feature/login ●
+```
+
+PASO 2: TRABAJAR EN LA FEATURE
+──────────────────────────────
+    feature/login
+      │
+      ├─ ● Commit 1: Agregar formulario
+      │
+      ├─ ● Commit 2: Validar input
+      │
+      ├─ ● Commit 3: Conectar con API
+      │
+      ↓
+
+PASO 3: MERGEAR EN DEVELOP
+──────────────────────────
+    feature/login           develop
+      │                       │
+      │ git flow feature finish
+      │ o
+      │ git merge --no-ff feature/login develop
+      │
+      └──────────────────────→ ●
+                              │
+                              ├─ ● Login integrada
+                              │
+                              ↓
+"""
+
+# CICLO DE RELEASE
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+STEP 1: FEATURE BRANCHES EN DEVELOP
+───────────────────────────────────
+
+    develop  ●──────●──────●──────●
+    
+    feature/login  ┘
+    feature/payments ┘
+    feature/dashboard ┘
+    feature/api-v2 ┘
+
+
+STEP 2: CREAR RELEASE BRANCH
+────────────────────────────
+
+    develop ●──────●──────●──────●
+                          │
+                          │ git flow release start 1.2.0
+                          │ o
+                          │ git checkout -b release/v1.2.0 develop
+                          │
+                          ↓
+                    release/v1.2.0 ●
+    
+    (Aquí se hacen: bug fixes, actualizar versión, tests finales)
+
+
+STEP 3: MERGEAR RELEASE EN MAIN Y DEVELOP
+──────────────────────────────────────────
+
+    main                              ●────────────→ ●
+                                      │              │
+                                      │ v1.2.0 (tag)
+                                      │              │
+    release/v1.2.0 ●─────────────────●──────────────●
+                   git merge --no-ff  │
+                                      ↓
+    develop        ●────────────────────────────────●
+                        ↑                            ↓
+                      git merge --no-ff          (continúa desarrollo)
+"""
+
+# CICLO DE HOTFIX (EMERGENCIA)
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+ESCENARIO: Bug crítico en producción (main v1.1.0)
+───────────────────────────────────────────────────
+
+    main           v1.1.0                                v1.1.1
+      ●────────────●───────────────────────────────────→ ●
+      │                                                  ↑
+      │                                                  │
+      │─────────────────────────────────────────────────│
+                                                        │
+    EMERGENCIA DETECTADA !!                          git merge --no-ff
+                                                        │
+    git checkout -b hotfix/crash main                  │
+                                                       ●
+    hotfix/crash ●────────────────────────────────────→ ●
+                 │                                      │
+                 ├─ ● Identificar bug                   │
+                 │                                      │
+                 ├─ ● Fix código                        │
+                 │                                      │
+                 ├─ ● Test rápido                       │
+                 │                                      │
+                 ─────┐                        git merge --no-ff
+                       │                                 │
+                       │                                 ↓
+    develop      ●─────●────────────────────────────────●
+                        ↑                                ↓
+                        │   git merge --no-ff
+                        └────────────────────────────────┘
+                                (sincronizar develop)
+"""
+
+# ESTADO DE RAMAS EN DIFERENTES MOMENTOS
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+MOMENTO 1: Desarrollo activo (múltiples features)
+──────────────────────────────────────────────────
+
+    main                                v1.0
+      ●─────────────────────────────────●
+
+    develop   ●───────●───────●───────●
+              │       │       │       │
+    feature/login     ┘       │       │
+              feature/notifications ┘ │
+                      feature/settings ┘
+    
+    Status: 3 features activas, listas para desarrolladores
+
+
+MOMENTO 2: Preparación de release
+──────────────────────────────────
+
+    main                              v1.0
+      ●───────────────────────────────●
+
+    develop   ●───────●───────●───────●
+              │       │       │       │
+    feature/login     ┘       │       │
+              feature/notifications ┘ │
+                      feature/settings ┘ (casi completado)
+                                        │
+                                        ↓
+    release/v1.1.0    ●────────────────●
+                      │     (arreglos)
+                      ↓
+
+
+MOMENTO 3: Release y hotfix simultáneo
+──────────────────────────────────────
+
+    main                              v1.0          v1.0.1
+      ●───────────────────────────────●───────────→ ●
+      │                               │            ↑
+      │                               ├─ v1.1 (EN PROGRESO)
+      │                               │            │
+      │                               hotfix/crash │
+      │                               ●────────────┘
+      │                               
+    release/v1.1.0    ●───────────────●
+                      │       (pruebas y fixing)
+    
+    develop   ●───────●───────●───────●────────────●
+              │       │       │       │
+              |       |       |       ├─ Merge hotfix
+              |       |       ├─ Merge release
+              |       |       |
+              feature/dashboard ┘
+
+
+MOMENTO 4: Post-release (desarrollo continúa)
+──────────────────────────────────────────────
+
+    main                              v1.0    v1.1
+      ●───────────────────────────────●────────●
+
+    develop   ●───────●───────●───────●────────●──────●
+              │       │       │       │        │      │
+    feature/auth     ┘  │     │       │        │      │
+              feature/cache  ┘       │        │      │
+                      feature/websocket    ┘  │      │
+                              feature/graphql ┘      │
+                                      feature/new-ui ┘
+    
+    Status: Release completada, nuevos features en desarrollo
+"""
+
+# COMPARACIÓN: FEATURE vs HOTFIX
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+FEATURE BRANCH                      HOTFIX BRANCH
+═════════════════════════════════════════════════════════════════
+
+Surge de:          develop         Surge de:          main
+
+
+Dura:              días/semanas    Dura:              horas
+
+
+Se mergea en:      develop         Se mergea en:      main + develop
+
+
+Ejemplo:                           Ejemplo:
+  feature/login                      hotfix/database-crash
+
+
+Naming:            feature/*       Naming:            hotfix/*
+
+
+Propósito:         Nueva feat      Propósito:         Bug crítico
+
+
+Prioridad:         Normal          Prioridad:         ALTA
+
+
+Urgencia:         Puede esperar    Urgencia:  INMEDIATA (producción)
+
+
+Test:              Completo        Test:              Rápido (focus)
+
+
+Impacto:          Develop          Impacto:  Producción + Develop
+"""
+
+# CHECKLIST: ANTES DE MERGEAR
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+✓ CHECKLIST ANTES DE MERGEAR A DEVELOP
+─────────────────────────────────────────
+
+Feature Branch:
+  □ Branch creada desde develop
+  □ Commits tienen mensajes claros
+  □ Código sigue estándares del proyecto
+  □ Tests pasan correctamente
+  □ Sin conflictos con develop
+  □ PR tiene descripción clara
+  □ Al menos 1 review aprobado
+  □ Pipeines CI/CD pasan
+
+Merge:
+  □ git pull origin develop (traer cambios)
+  □ git merge --no-ff feature/nombre
+  □ git push origin develop
+  □ git branch -d feature/nombre
+  □ git push origin --delete feature/nombre
+
+
+✓ CHECKLIST ANTES DE MERGEAR A MAIN (Release/Hotfix)
+────────────────────────────────────────────────────
+
+Release/Hotfix Branch:
+  □ Versión actualizada en archivos
+  □ CHANGELOG actualizado
+  □ Tests completos pasan
+  □ QA aprueba release
+  □ Documentación lista
+  □ Sin conflictos con main
+  □ Sin conflictos con develop
+
+Merge:
+  □ git tag -a vX.Y.Z -m "mensaje"
+  □ git merge --no-ff release/vX.Y.Z a main
+  □ git push origin main --tags
+  □ git merge --no-ff release/vX.Y.Z a develop
+  □ git push origin develop
+  □ git branch -d release/vX.Y.Z
+"""
+
+# REFERENCIAS RÁPIDAS
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+╔════════════════════════════════════════════════════════════════════════════╗
+║                          COMANDOS RÁPIDOS                                  ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+CON GIT FLOW TOOL:
+─────────────────
+
+# Inicializar
+git flow init -d
+
+# Feature
+git flow feature start nombre
+git flow feature finish nombre
+
+# Release  
+git flow release start vX.Y.Z
+git flow release finish vX.Y.Z
+
+# Hotfix
+git flow hotfix start nombre
+git flow hotfix finish nombre
+
+
+SIN GIT FLOW (MANUAL):
+─────────────────────
+
+# Feature
+git checkout -b feature/nombre develop
+# ... trabajar ...
+git checkout develop
+git merge --no-ff feature/nombre
+git branch -d feature/nombre
+
+# Release
+git checkout -b release/vX.Y.Z develop
+# ... arreglos ...
+git checkout main
+git merge --no-ff release/vX.Y.Z
+git tag -a vX.Y.Z
+
+# Hotfix
+git checkout -b hotfix/nombre main
+# ... arreglo ...
+git checkout main
+git merge --no-ff hotfix/nombre
+git tag -a vX.Y.Z
+
+
+PUSH Y SINCRONIZACIÓN:
+─────────────────────
+
+git push origin nombre-rama        # Enviar rama
+git push origin --all              # Enviar todas
+git push origin --tags             # Enviar tags
+git pull origin nombre-rama        # Traer cambios
+git fetch origin                   # Actualizar referencias
+"""
+
+# ASCII ART: RAMA TÍPICA
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+┌─ ESTRUCTURA TÍPICA DE UN REPOSITORIO GIT FLOW ─┐
+
+    origin (repositorio remoto)
+    │
+    ├─ main
+    │  └─ ● v1.0 (tag)
+    │  └─ ● v1.1 (tag)
+    │  └─ ● v1.2 (tag) ← HEAD (producción actual)
+    │
+    ├─ develop
+    │  └─ ● commit-N
+    │  └─ ● commit-N+1
+    │  └─ ● commit-N+2 ← HEAD (desarrollo actual)
+    │
+    ├─ feature/auth
+    │  └─ ● commit-1
+    │  └─ ● commit-2 ← HEAD
+    │
+    ├─ feature/payments
+    │  └─ ● commit-1
+    │  └─ ● commit-2 ← HEAD
+    │
+    ├─ release/v1.3.0
+    │  └─ ● Bump version
+    │  └─ ● Fix bugs ← HEAD
+    │
+    └─ hotfix/security-patch
+       └─ ● Security fix ← HEAD
+
+└──────────────────────────────────────────────────┘
+"""
+
+# PATRONES DE COMMIT MESSAGE
+# ─────────────────────────────────────────────────────────────────────────
+
+"""
+RECOMENDADO (Conventional Commits):
+──────────────────────────────────
+
+feat: agregar autenticación de dos factores
+fix: corregir crash en formulario de pago
+docs: actualizar README
+style: formatear código con prettier
+refactor: simplificar lógica de validación
+perf: optimizar queries a base de datos
+test: agregar tests para módulo de usuarios
+chore: actualizar dependencias
+
+EJEMPLO DE BUEN COMMIT:
+──────────────────────
+
+feat: implementar login con GitHub
+
+- Agregar botón de login con GitHub
+- Configurar OAuth con GitHub Apps
+- Guardar usuario en base de datos
+- Crear tests para autenticación
+
+Fixes #123
+"""
+
+print(__doc__)

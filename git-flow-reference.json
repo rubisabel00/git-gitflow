@@ -1,0 +1,311 @@
+{
+  "gitFlow": {
+    "descripcion": "Git Flow es una estrategia de branching introducida por Vincent Driessen para facilitar la organización del ciclo de vida del desarrollo de software.",
+    "beneficios": [
+      "Organización clara con ramas específicas para cada propósito",
+      "Control de múltiples versiones en paralelo",
+      "Flujo controlado con integración y pruebas antes de producción",
+      "Reducción de riesgos manteniendo código estable en main",
+      "Facilita la colaboración en equipos grandes",
+      "Permite hotfixes rápidos sin afectar el desarrollo"
+    ],
+    "casosDeUsoIdeales": [
+      "Proyectos con versiones públicas",
+      "Equipos de desarrollo grandes (5+ desarrolladores)",
+      "Software que requiere estabilidad en producción",
+      "Aplicaciones con ciclos de release planeados",
+      "Proyectos que necesitan soportar múltiples versiones simultáneamente",
+      "Software con requerimientos de mantenimiento de versiones anteriores"
+    ],
+    "ramas": {
+      "main": {
+        "nombre": "main",
+        "tipo": "permanente",
+        "descripcion": "Rama principal siempre lista para producción",
+        "caracteristicas": [
+          "Solo contiene versiones estables",
+          "Cada commit es una versión liberada",
+          "Los commits están etiquetados con números de versión",
+          "Nunca se trabaja directamente aquí"
+        ],
+        "surgeDe": "release y hotfix",
+        "seFusionaEn": null,
+        "duracion": "toda la vida del proyecto",
+        "convenciones": {
+          "nombreRama": "main",
+          "commits": "merge --no-ff de release o hotfix",
+          "tags": "vX.Y.Z (semántica de versiones)"
+        }
+      },
+      "develop": {
+        "nombre": "develop",
+        "tipo": "permanente",
+        "descripcion": "Rama de integración donde convergen todas las características",
+        "caracteristicas": [
+          "Punto de integración para todas las features",
+          "Código en constante evolución pero estable",
+          "Base para crear ramas de release",
+          "Debe estar compilable y funcional"
+        ],
+        "surgeDe": "main (en inicialización)",
+        "seFusionaEn": "nunca directamente",
+        "duracion": "toda la vida del proyecto",
+        "convenciones": {
+          "nombreRama": "develop",
+          "commits": "merge --no-ff de features, recibe merges de release y hotfix",
+          "tags": "no suele tener tags"
+        }
+      },
+      "feature": {
+        "nombre": "feature/*",
+        "tipo": "temporal",
+        "descripcion": "Ramas para desarrollar nuevas características o mejoras",
+        "caracteristicas": [
+          "Se crea desde develop",
+          "Una rama por característica independiente",
+          "Se elimina después de fusionarla en develop",
+          "Permite paralelizar el trabajo"
+        ],
+        "surgeDe": "develop",
+        "seFusionaEn": "develop",
+        "duracion": "días o semanas",
+        "convenciones": {
+          "nombreRama": "feature/nombre-descriptivo",
+          "ejemplos": [
+            "feature/login",
+            "feature/user-dashboard",
+            "feature/payment-integration",
+            "feature/dark-mode"
+          ],
+          "commits": "merge --no-ff merge commit",
+          "tags": "no tiene tags"
+        }
+      },
+      "release": {
+        "nombre": "release/*",
+        "tipo": "temporal",
+        "descripcion": "Rama para preparar una nueva versión para producción",
+        "caracteristicas": [
+          "Se crea desde develop cuando una versión está lista",
+          "Aquí se corrigen bugs menores y se actualiza la versión",
+          "Se fusiona tanto en main como en develop",
+          "Permite que develop continúe recibiendo features"
+        ],
+        "surgeDe": "develop",
+        "seFusionaEn": "main y develop",
+        "duracion": "varios días",
+        "convenciones": {
+          "nombreRama": "release/vX.Y.Z",
+          "ejemplos": [
+            "release/v1.0.0",
+            "release/v1.2.0",
+            "release/v2.0.0-beta"
+          ],
+          "commits": "arreglos menores, actualización de versión",
+          "tags": "tag en main con mismo versionado"
+        }
+      },
+      "hotfix": {
+        "nombre": "hotfix/*",
+        "tipo": "temporal",
+        "descripcion": "Rama para arreglar errores críticos en producción",
+        "caracteristicas": [
+          "Se crea desde main (última versión en producción)",
+          "Se usa solo para arreglos críticos e inmediatos",
+          "Se fusiona en main y develop para mantener sincronización",
+          "Evita esperar ciclos de release normales"
+        ],
+        "surgeDe": "main",
+        "seFusionaEn": "main y develop",
+        "duracion": "horas o pocas horas por día",
+        "convenciones": {
+          "nombreRama": "hotfix/nombre-descriptivo",
+          "ejemplos": [
+            "hotfix/payment-crash",
+            "hotfix/database-connection",
+            "hotfix/security-issue"
+          ],
+          "commits": "solo el arreglo necesario",
+          "tags": "tag en main con versión incrementada"
+        }
+      }
+    },
+    "flujoTipico": {
+      "paso1_iniciarFeature": {
+        "descripcion": "Crear una nueva rama feature desde develop",
+        "comandos": [
+          "git checkout -b feature/nombre-descriptivo develop",
+          "O con git-flow: git flow feature start nombre-descriptivo"
+        ]
+      },
+      "paso2_trabajarEnFeature": {
+        "descripcion": "Hacer cambios, commits y push",
+        "comandos": [
+          "# Editar archivos",
+          "git add .",
+          "git commit -m 'Implementar funcionalidad'",
+          "git push origin feature/nombre-descriptivo"
+        ]
+      },
+      "paso3_terminarFeature": {
+        "descripcion": "Hacer merge en develop",
+        "comandos": [
+          "git checkout develop",
+          "git pull origin develop",
+          "git merge --no-ff feature/nombre-descriptivo",
+          "git push origin develop",
+          "git branch -d feature/nombre-descriptivo"
+        ]
+      },
+      "paso4_iniciarRelease": {
+        "descripcion": "Cuando develop está lista para versión",
+        "comandos": [
+          "git checkout -b release/vX.Y.Z develop",
+          "O con git-flow: git flow release start X.Y.Z"
+        ]
+      },
+      "paso5_prepararRelease": {
+        "descripcion": "Arreglos finales, actualizar versionado",
+        "comandos": [
+          "# Actualizar version en archivos",
+          "# Arreglar bugs menores",
+          "git add .",
+          "git commit -m 'Bump to vX.Y.Z'"
+        ]
+      },
+      "paso6_terminarRelease": {
+        "descripcion": "Merge en main y develop",
+        "comandos": [
+          "git checkout main",
+          "git merge --no-ff release/vX.Y.Z",
+          "git tag -a vX.Y.Z",
+          "git push origin main --tags",
+          "git checkout develop",
+          "git merge --no-ff release/vX.Y.Z",
+          "git push origin develop"
+        ]
+      }
+    },
+    "ventajasDesventajas": {
+      "ventajas": [
+        "Estructura clara y predecible",
+        "Facilita trabajo en paralelo",
+        "Gestión efectiva de múltiples versiones",
+        "Control estricto sobre producción",
+        "Ideal para equipos y proyectos grandes",
+        "Soporta hotfixes sin pausar desarrollo"
+      ],
+      "desventajas": [
+        "Puede ser excesivo para proyectos pequeños",
+        "Requiere disciplina del equipo",
+        "Curva de aprendizaje inicial",
+        "Más merges que otros modelos",
+        "Puede resultar en historial complejo"
+      ]
+    },
+    "alternativas": [
+      {
+        "nombre": "GitHub Flow",
+        "descripcion": "Más simple, usa solo main y feature branches",
+        "mejorPara": "Deployment continuo, equipos pequeños"
+      },
+      {
+        "nombre": "GitLab Flow",
+        "descripcion": "Mezcla Git Flow y continuous deployment",
+        "mejorPara": "Flujos complejos con ambientes múltiples"
+      },
+      {
+        "nombre": "Trunk-Based Development",
+        "descripcion": "Todos commiten a rama principal, muy iterativo",
+        "mejorPara": "CI/CD agresivo, equipos muy experimentados"
+      }
+    ],
+    "mejoresPracticas": [
+      "Usa nombres de rama descriptivos y concisos",
+      "Realiza commits pequeños y frecuentes",
+      "Escribe mensajes de commit claros y atómicos",
+      "Revisa pulll requests antes de mergear",
+      "Mantén ramas sincronizadas con develop/main",
+      "Usa tags para marcar versiones en main",
+      "Automatiza pruebas antes de merge",
+      "Delete ramas después del merge",
+      "Usa hooks para enforcer reglas",
+      "Documenta políticas de branching del equipo"
+    ],
+    "comandosEsenciales": {
+      "conGitFlow": [
+        "git flow init -d",
+        "git flow feature start nombre",
+        "git flow feature finish nombre",
+        "git flow release start vX.Y.Z",
+        "git flow release finish vX.Y.Z",
+        "git flow hotfix start nombre",
+        "git flow hotfix finish nombre"
+      ],
+      "sinGitFlow": [
+        "git checkout -b feature/nombre develop",
+        "git merge --no-ff feature/nombre",
+        "git tag -a vX.Y.Z -m 'mensaje'",
+        "git push origin --all",
+        "git push origin --tags",
+        "git branch -d nombre",
+        "git push origin --delete nombre"
+      ]
+    },
+    "convencionesDenominacion": {
+      "features": "feature/descripcion-rapida",
+      "releases": "release/vX.Y.Z",
+      "hotfixes": "hotfix/descripcion-breve",
+      "tags": "vX.Y.Z (ej: v1.2.3, v2.0.0)",
+      "commits": "Tipo: Descripción (ej: feat: agregar login, fix: corregir bug)"
+    },
+    "mesajesCommitRecomendados": {
+      "tipos": [
+        {
+          "tipo": "feat",
+          "descripcion": "Nueva característica",
+          "ejemplo": "feat: agregar autenticación de dos factores"
+        },
+        {
+          "tipo": "fix",
+          "descripcion": "Corrección de bug",
+          "ejemplo": "fix: corregir crash en pago"
+        },
+        {
+          "tipo": "docs",
+          "descripcion": "Cambios de documentación",
+          "ejemplo": "docs: actualizar README"
+        },
+        {
+          "tipo": "style",
+          "descripcion": "Cambios sin afectar lógica (espacios, etc)",
+          "ejemplo": "style: formatear código"
+        },
+        {
+          "tipo": "refactor",
+          "descripcion": "Refactorización sin cambiar funcionalidad",
+          "ejemplo": "refactor: simplificar lógica de validación"
+        },
+        {
+          "tipo": "perf",
+          "descripcion": "Mejora de rendimiento",
+          "ejemplo": "perf: optimizar queries a base datos"
+        },
+        {
+          "tipo": "test",
+          "descripcion": "Agregar o actualizar tests",
+          "ejemplo": "test: agregar tests para usuario"
+        }
+      ]
+    }
+  },
+  "versioningSematico": {
+    "descripcion": "X.Y.Z donde X=Major, Y=Minor, Z=Patch",
+    "ejemplos": [
+      {"version": "1.0.0", "descripcion": "Primera versión"},
+      {"version": "1.1.0", "descripcion": "Nueva funcionalidad compatible"},
+      {"version": "1.1.1", "descripcion": "Corrección de bug"},
+      {"version": "2.0.0", "descripcion": "Cambios incompatibles"}
+    ]
+  }
+}

@@ -1,0 +1,343 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                  📚 BIENVENIDO A LA GUÍA INTERACTIVA                        ║
+║              GIT, GITHUB Y GIT FLOW - APRENDE Y PRACTICA                    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+🚀 INICIO RÁPIDO
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  ABRE LA GUÍA
+    └─ Haz doble clic en: index.html
+       O arrastra index.html a tu navegador (Chrome, Firefox, Safari, Edge)
+
+2️⃣  NAVEGA POR LOS TEMAS
+    └─ Usa las pestañas en la parte superior para cambiar entre secciones
+
+3️⃣  PRACTICA CON EL SIMULADOR
+    └─ Ve a la pestaña "Simulador" y experimenta con Git Flow
+
+4️⃣  CONSULTA LA DOCUMENTACIÓN
+    └─ Ve a las guías de referencia para profundizar
+
+
+📂 ARCHIVOS DISPONIBLES
+═══════════════════════════════════════════════════════════════════════════════
+
+INTERFAZ INTERACTIVA:
+  📄 index.html              ⭐ ABRE ESTO EN EL NAVEGADOR
+  🎨 styles.css             Estilos de la guía
+  ⚙️  script.js              Lógica interactiva y simulador
+
+DOCUMENTACIÓN:
+  📖 README.md              Descripción general y resumen
+  📋 ÍNDICE.md              Índice completo con rutas de aprendizaje
+  
+GUÍAS DE REFERENCIA:
+  📚 COMANDOS_GIT_FLOW.md   +40 Comandos Git Flow con ejemplos
+  🎮 ESCENARIOS_PRACTICOS.md 10 Situaciones reales con soluciones
+  🆘 TROUBLESHOOTING.md     Problemas comunes y sus soluciones
+  📊 DIAGRAMA_GIT_FLOW.txt  Visualización ASCII del flujo
+  
+REFERENCIA TÉCNICA:
+  📑 git-flow-reference.json Referencia completa en formato JSON
+
+
+🎓 RUTAS DE APRENDIZAJE RECOMENDADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+👶 PRINCIPIANTE TOTAL
+   1. Abre index.html → Lee "Inicio" + "Git Básico"
+   2. Lee DIAGRAMA_GIT_FLOW.txt
+   3. Practica en el Simulador (Escenario 1)
+   ⏱️  Tiempo: 15-20 minutos
+
+🆕 NUEVO EN GIT FLOW
+   1. index.html → "Git Flow" + "Tipos de Ramas"
+   2. Practica los 3 escenarios del Simulador
+   3. Lee ESCENARIOS_PRACTICOS.md (escenarios 1-5)
+   ⏱️  Tiempo: 30-45 minutos
+
+🏢 PARA USAR EN PRODUCCIÓN
+   1. Domina COMANDOS_GIT_FLOW.md
+   2. Estudia ESCENARIOS_PRACTICOS.md (escenarios 3, 4, 5)
+   3. Ten a mano TROUBLESHOOTING.md
+   4. Referencia: git-flow-reference.json
+   ⏱️  Tiempo: 1-2 horas
+
+🆘 CUANDO TENGAS PROBLEMAS
+   1. Busca en TROUBLESHOOTING.md
+   2. Simula el escenario en el Simulador
+   3. Consulta ESCENARIOS_PRACTICOS.md
+   4. Revisa COMANDOS_GIT_FLOW.md
+
+
+🎯 LO QUE APRENDERÁS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Fundamentos de Git y control de versiones
+✓ Cómo colaborar en GitHub con Pull Requests
+✓ Git Flow: la estrategia de branching profesional
+✓ Ramas: main, develop, feature, release, hotfix
+✓ Resolver conflictos y mergear código
+✓ Trabajar en equipo sin problemas
+✓ Crear releases y hotfixes correctamente
+✓ Recuperarse de errores en Git
+✓ +50 comandos Git prácticos
+✓ Mejores prácticas de desarrollo
+
+
+💡 CARACTERÍSTICAS ESPECIALES
+═══════════════════════════════════════════════════════════════════════════════
+
+🎮 SIMULADOR INTERACTIVO
+   └─ Practica Git Flow en tiempo real sin riesgos
+
+📊 DIAGRAMAS VISUALES
+   └─ Entiende el flujo con gráficas y visualizaciones
+
+🔍 REFERENCIA COMPLETA
+   └─ +40 comandos con ejemplos prácticos
+
+📖 10 ESCENARIOS REALES
+   └─ Basados en situaciones del mundo real
+
+🆘 SOLUCIÓN DE PROBLEMAS
+   └─ Más de 25 problemas comunes solucionados
+
+📱 RESPONSIVE DESIGN
+   └─ Funciona perfectamente en desktop, tablet y móvil
+
+
+🚀 PRIMEROS PASOS
+═══════════════════════════════════════════════════════════════════════════════
+
+Paso 1: Abre index.html
+┌────────────────────────────────────────────────────────────────────────┐
+│ Haz clic aquí: c:\Users\ASUS\Documents\GUIAS-INTERACTIVAS\guia-github │
+│ Luego: Doble clic en index.html                                       │
+│                                                                         │
+│ O arrastra index.html a:                                              │
+│   • Chrome • Firefox • Safari • Edge                                   │
+└────────────────────────────────────────────────────────────────────────┘
+
+Paso 2: Lee y Aprende
+   1. Pestaña "Inicio" - Introducción
+   2. Pestaña "Git Básico" - Conceptos fundamentales
+   3. Pestaña "GitHub" - Colaboración
+   4. Pestaña "Git Flow" - El tema principal
+
+Paso 3: Practica
+   1. Ve a la pestaña "Simulador"
+   2. Haz clic en "Iniciar Feature"
+   3. Completa la feature
+   4. Prueba "Iniciar Release"
+
+Paso 4: Profundiza
+   • Lee los archivos .md adjuntos
+   • Consulta la referencia JSON
+   • Revisa los diagramas
+
+
+📚 ESTRUCTURA DE LA GUÍA
+═══════════════════════════════════════════════════════════════════════════════
+
+SECCIÓN 1: FUNDAMENTOS
+  ├─ ¿Qué es Git?
+  ├─ ¿Qué es GitHub?
+  ├─ Control de versiones básico
+  └─ Ciclo de trabajo simple
+
+SECCIÓN 2: GIT FLOW
+  ├─ Introducción a Git Flow
+  ├─ Estrategia de branching
+  ├─ Beneficios y casos de uso
+  └─ Diagrama visual completo
+
+SECCIÓN 3: TIPOS DE RAMAS
+  ├─ main (producción)
+  ├─ develop (integración)
+  ├─ feature/* (características)
+  ├─ release/* (versiones)
+  └─ hotfix/* (emergencias)
+
+SECCIÓN 4: PRÁCTICA
+  ├─ Simulador interactivo
+  ├─ Escenarios predefinidos
+  ├─ Historial de cambios
+  └─ Aprender haciendo
+
+SECCIÓN 5: DOCUMENTACIÓN
+  ├─ +40 comandos git
+  ├─ 10 escenarios reales
+  ├─ Solución de problemas
+  └─ Referencia técnica
+
+
+❓ PREGUNTAS FRECUENTES
+═══════════════════════════════════════════════════════════════════════════════
+
+P: ¿Necesito estar conectado a internet?
+R: No, funciona completamente offline.
+
+P: ¿Funciona en mi navegador?
+R: Sí, en Chrome, Firefox, Safari, Edge y cualquier navegador moderno.
+
+P: ¿Es necesario instalar algo?
+R: No, solo abre index.html en el navegador.
+
+P: ¿Puedo guardar mi progreso?
+R: Sí, la guía guarda tu progreso localmente en el navegador.
+
+P: ¿Cómo practico sin dañar un proyecto real?
+R: Usa el Simulador en la pestaña "Simulador" - es 100% seguro.
+
+P: ¿Dónde encuentro ejemplos de código?
+R: En ESCENARIOS_PRACTICOS.md y COMANDOS_GIT_FLOW.md
+
+P: ¿Qué pasa si cometo un error?
+R: Lee TROUBLESHOOTING.md - cubre la mayoría de situaciones.
+
+P: ¿Es adecuado para principiantes?
+R: Sí, está diseñado para todos los niveles de experiencia.
+
+
+🔗 VÍNCULOS ÚTILES
+═══════════════════════════════════════════════════════════════════════════════
+
+Git Oficial:      https://git-scm.com
+Pro Git Book:     https://git-scm.com/book/es/v2
+Git Flow Original: https://nvie.com/posts/a-successful-git-branching-model/
+GitHub Docs:      https://docs.github.com
+GitHub Guides:    https://guides.github.com
+
+
+💻 COMANDOS RÁPIDOS PARA EMPEZAR
+═══════════════════════════════════════════════════════════════════════════════
+
+Configurar Git:
+  git config --global user.name "Tu Nombre"
+  git config --global user.email "tu@email.com"
+
+Inicializar Git Flow:
+  git flow init -d
+
+Crear una feature:
+  git flow feature start nombre
+
+  o manualmente:
+
+  git checkout -b feature/nombre develop
+
+Ver más comandos: Lee COMANDOS_GIT_FLOW.md
+
+
+📊 ESTADÍSTICAS DE LA GUÍA
+═══════════════════════════════════════════════════════════════════════════════
+
+Contenido:
+  • 6 pestañas interactivas
+  • 1 simulador completamente funcional
+  • 3 escenarios de práctica
+  • 10 temas principales
+  • 5 tipos de ramas explicados
+  • 6 archivos de referencia
+
+Cobertura:
+  • 40+ comandos Git documentados
+  • 10 escenarios prácticos del mundo real
+  • 25+ problemas comunes solucionados
+  • 100+ diagramas y visualizaciones
+  • 20+ gráficas interactivas
+
+Documentación:
+  • +2000 líneas de documentación
+  • Ejemplos de código en cada sección
+  • Tablas comparativas
+  • Diagramas ASCII
+  • Referencia JSON estructurada
+
+
+🎯 OBJETIVOS FINALES
+═══════════════════════════════════════════════════════════════════════════════
+
+Después de completar esta guía, serás capaz de:
+
+✅ Explicar Git y control de versiones
+✅ Usar GitHub y crear Pull Requests
+✅ Implementar Git Flow en tu proyecto
+✅ Trabajar con múltiples ramas simultáneamente
+✅ Resolver conflictos efectivamente
+✅ Crear features, releases y hotfixes correctamente
+✅ Colaborar en equipo sin problemas
+✅ Recuperarte de errores en Git
+✅ Seguir mejores prácticas profesionales
+✅ Enseñar Git Flow a otros desarrolladores
+
+
+✨ CARACTERÍSTICAS QUE HACEN ESTA GUÍA ESPECIAL
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ 100% Interactive - Aprende haciendo, no solo leyendo
+✓ 100% Offline - Funciona sin conexión a internet
+✓ 100% Completamente Gratuito - Sin limitaciones
+✓ 100% Responsive - Se ve perfecto en cualquier dispositivo
+✓ 100% Práctico - Basado en situaciones reales
+✓ 100% Sin Dependencias - Pure HTML, CSS y JavaScript
+✓ 100% Guardado Local - Tu progreso se guarda automáticamente
+✓ 100% Flexible - Aprende a tu propio ritmo
+
+
+🎓 COMENZAR AHORA
+═══════════════════════════════════════════════════════════════════════════════
+
+                    👉 ABRE index.html EN TU NAVEGADOR 👈
+
+El archivo HTML incluye:
+  • Guía interactiva completa
+  • Simulador práctico
+  • Todos los diagramas
+  • Referencias de comandos
+  • Ejemplos de código
+
+Las guías .md y .txt incluyen:
+  • Documentación detallada
+  • Comandos con ejemplos
+  • Solución de problemas
+  • Diagramas ASCII
+  • Referencia técnica
+
+
+📞 AYUDA Y SOPORTE
+═══════════════════════════════════════════════════════════════════════════════
+
+Si necesitas ayuda:
+
+1. Consulta el archivo correspondiente:
+   • Problemas → TROUBLESHOOTING.md
+   • Ejemplos reales → ESCENARIOS_PRACTICOS.md
+   • Comandos → COMANDOS_GIT_FLOW.md
+   • Visualización → DIAGRAMA_GIT_FLOW.txt
+   • Índice completo → ÍNDICE.md
+
+2. Usa el Simulador interactivo para practicar
+
+3. Lee README.md para introducción rápida
+
+4. Consulta git-flow-reference.json para referencia técnica
+
+
+🚀 ¡ESTÁS LISTO PARA COMENZAR!
+═══════════════════════════════════════════════════════════════════════════════
+
+              Abre index.html en tu navegador y comienza ahora.
+
+                    ¡Buena suerte en tu aprendizaje! 🎉
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Last Updated: January 2024
+Created as an interactive learning guide for Git Flow
+Based on Vincent Driessen's model and modern best practices
