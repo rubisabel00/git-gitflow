@@ -625,6 +625,18 @@ body {
 /* ============================= */
 
 @media (max-width: 768px) {
+      .comparison-table table {
+        width: 50%;
+        border-collapse: collapse;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .comparison-table th,
+    .comparison-table td {
+        padding: 6px;
+        font-size: 0.8em;
+    }
     .header h1 {
         font-size: 1.8em;
     }
@@ -718,11 +730,17 @@ body {
     .action-btn {
         flex: 1 0 100%;
     }
-
+    .comparison-table table {
+        width: 80%;
+        border-collapse: collapse;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+    }
     .comparison-table th,
     .comparison-table td {
-        padding: 10px;
-        font-size: 0.9em;
+        padding: 8px;
+        font-size: 0.6em;
     }
 
     .branch-example code {

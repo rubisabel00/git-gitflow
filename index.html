@@ -425,7 +425,7 @@ git branch -d feature/login</code>
                     <!-- Release Branches -->
                     <div class="branch-card release-branch">
                         <div class="branch-header">
-                            <h3>🟠 release/* (Versión)</h3>
+                            <h3>🟠 release/* (staging) (Versión)</h3>
                             <span class="badge badge-warning">Rama de Lanzamiento</span>
                         </div>
                         <div class="branch-content">
@@ -547,7 +547,7 @@ git tag v1.2.1</code>
                                 <td>Nueva funcionalidad</td>
                             </tr>
                             <tr>
-                                <td><strong>release</strong></td>
+                                <td><strong>release o staging</strong></td>
                                 <td>develop</td>
                                 <td>main + develop</td>
                                 <td>Temporal (días)</td>
@@ -562,6 +562,15 @@ git tag v1.2.1</code>
                                 <td>hotfix/*</td>
                                 <td>Arreglo urgente</td>
                             </tr>
+                            <tr>
+                                <td><strong>bugfix</strong></td>
+                                <td>develop y/o release</td>
+                                <td>develop y release</td>
+                                <td>Temporal (horas/días)</td>
+                                <td>bugfix/*</td>
+                                <td>Corrección de errores no críticos</td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
