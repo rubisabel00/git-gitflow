@@ -728,6 +728,9 @@ body {
     .branch-example code {
         font-size: 0.8em;
     }
+    .footer-text{
+        font-size: 0.5em;
+    }
 }
 
 /* ============================= */
