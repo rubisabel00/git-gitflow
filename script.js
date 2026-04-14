@@ -168,7 +168,7 @@ function drawSimulatorState() {
     drawBranch(canvas, 50, 80, 'main', '#d32f2f', simulator.state.mainBranches);
     
     // Draw develop branch
-    drawBranch(canvas, 50, 180, 'develop', '#4caf50', [
+    drawBranch(canvas, 80, 180, 'develop', '#4caf50', [
         ...simulator.state.features,
         ...simulator.state.releases,
         ...simulator.state.hotfixes
@@ -177,14 +177,14 @@ function drawSimulatorState() {
     // Draw current features
     let yOffset = 280;
     simulator.state.currentFeatures.forEach((feature, index) => {
-        drawBranch(canvas, 50 + (index * 180), yOffset, `feature/${feature.name}`, '#2196f3', 
+        drawBranch(canvas, 200 + (index * 180), yOffset, `feature/${feature.name}`, '#2196f3', 
             Array(feature.commits).fill(null).map((_, i) => ({ name: `Commit ${i + 1}` })));
     });
     
     // Draw current releases
     if (simulator.state.currentReleases.length > 0) {
         const release = simulator.state.currentReleases[0];
-        drawBranch(canvas, 50, yOffset + 80, `release/${release.name}`, '#ff9800', 
+        drawBranch(canvas, 100, yOffset + 80, `release/${release.name}`, '#ff9800', 
             Array(release.commits).fill(null).map((_, i) => ({ name: `Fix ${i + 1}` })));
     }
     
